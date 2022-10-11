@@ -10,9 +10,19 @@ namespace ConsumeWSSegura
     {
         static void Main(string[] args)
         {
+            ConsumeHelloWorldSinSeguridad();
+        }
 
+        private static void ConsumeHelloWorldSinSeguridad()
+        {
+            using (var client = new MiServicioReference.MiServicioSoapClient())
+            {
+                string result = client.HelloWorldSinSeguridad();
 
+                Console.WriteLine(result);
 
+                Console.ReadKey();
+            }
         }
     }
 }

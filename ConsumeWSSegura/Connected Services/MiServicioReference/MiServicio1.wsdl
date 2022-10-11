@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorldSeguro">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldSeguroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldSeguroResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorldSinSeguridad">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldSinSeguridadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldSinSeguridadResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSeguroSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorldSeguro" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSeguroSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldSeguroResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSinSeguridadSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorldSinSeguridad" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSinSeguridadSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldSinSeguridadResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MiServicioSoap">
+    <wsdl:operation name="HelloWorldSeguro">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">`Método seguro.</wsdl:documentation>
+      <wsdl:input message="tns:HelloWorldSeguroSoapIn" />
+      <wsdl:output message="tns:HelloWorldSeguroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorldSinSeguridad">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">`Método sin seguridad.</wsdl:documentation>
+      <wsdl:input message="tns:HelloWorldSinSeguridadSoapIn" />
+      <wsdl:output message="tns:HelloWorldSinSeguridadSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MiServicioSoap" type="tns:MiServicioSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorldSeguro">
+      <soap:operation soapAction="http://tempuri.org/HelloWorldSeguro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorldSinSeguridad">
+      <soap:operation soapAction="http://tempuri.org/HelloWorldSinSeguridad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MiServicioSoap12" type="tns:MiServicioSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorldSeguro">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorldSeguro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorldSinSeguridad">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorldSinSeguridad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MiServicio">
+    <wsdl:port name="MiServicioSoap" binding="tns:MiServicioSoap">
+      <soap:address location="http://localhost:8081/MiServicio.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MiServicioSoap12" binding="tns:MiServicioSoap12">
+      <soap12:address location="http://localhost:8081/MiServicio.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

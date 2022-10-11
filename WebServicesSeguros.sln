@@ -5,6 +5,11 @@ VisualStudioVersion = 17.0.32929.387
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServiceSegura", "WebServiceSegura\WebServiceSegura.csproj", "{EDC26C99-2CFF-4ADF-9AE9-816C149543A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumeWSSegura", "ConsumeWSSegura\ConsumeWSSegura.csproj", "{A6C5E621-FD68-4D28-ADCC-6B885A8702CB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EDC26C99-2CFF-4ADF-9AE9-816C149543A6} = {EDC26C99-2CFF-4ADF-9AE9-816C149543A6}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{EDC26C99-2CFF-4ADF-9AE9-816C149543A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDC26C99-2CFF-4ADF-9AE9-816C149543A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDC26C99-2CFF-4ADF-9AE9-816C149543A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6C5E621-FD68-4D28-ADCC-6B885A8702CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C5E621-FD68-4D28-ADCC-6B885A8702CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C5E621-FD68-4D28-ADCC-6B885A8702CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C5E621-FD68-4D28-ADCC-6B885A8702CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
