@@ -58,9 +58,6 @@
     <None Include="Connected Services\MiServicioReference\ConsumeWSSegura.MiServicioReference.HelloWorldSeguroResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\MiServicioReference\ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\MiServicioReference\MiServicio1.wsdl" />
   </ItemGroup>
   <ItemGroup>

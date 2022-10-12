@@ -15,140 +15,113 @@ namespace ConsumeWSSegura.MiServicioReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MiServicioReference.MiServicioSoap")]
     public interface MiServicioSoap {
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento HelloWorldSeguroResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje HelloWorldSeguroRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorldSeguro", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         ConsumeWSSegura.MiServicioReference.HelloWorldSeguroResponse HelloWorldSeguro(ConsumeWSSegura.MiServicioReference.HelloWorldSeguroRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorldSeguro", ReplyAction="*")]
         System.Threading.Tasks.Task<ConsumeWSSegura.MiServicioReference.HelloWorldSeguroResponse> HelloWorldSeguroAsync(ConsumeWSSegura.MiServicioReference.HelloWorldSeguroRequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento HelloWorldSinSeguridadResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorldSinSeguridad", ReplyAction="*")]
-        ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadResponse HelloWorldSinSeguridad(ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string HelloWorldSinSeguridad();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorldSinSeguridad", ReplyAction="*")]
-        System.Threading.Tasks.Task<ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadResponse> HelloWorldSinSeguridadAsync(ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequest request);
+        System.Threading.Tasks.Task<string> HelloWorldSinSeguridadAsync();
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class AuthUser : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string userNameField;
+        
+        private string passwordField;
+        
+        private System.Xml.XmlAttribute[] anyAttrField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string UserName {
+            get {
+                return this.userNameField;
+            }
+            set {
+                this.userNameField = value;
+                this.RaisePropertyChanged("UserName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                this.passwordField = value;
+                this.RaisePropertyChanged("Password");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
+        public System.Xml.XmlAttribute[] AnyAttr {
+            get {
+                return this.anyAttrField;
+            }
+            set {
+                this.anyAttrField = value;
+                this.RaisePropertyChanged("AnyAttr");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="HelloWorldSeguro", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class HelloWorldSeguroRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldSeguro", Namespace="http://tempuri.org/", Order=0)]
-        public ConsumeWSSegura.MiServicioReference.HelloWorldSeguroRequestBody Body;
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public ConsumeWSSegura.MiServicioReference.AuthUser AuthUser;
         
         public HelloWorldSeguroRequest() {
         }
         
-        public HelloWorldSeguroRequest(ConsumeWSSegura.MiServicioReference.HelloWorldSeguroRequestBody Body) {
-            this.Body = Body;
+        public HelloWorldSeguroRequest(ConsumeWSSegura.MiServicioReference.AuthUser AuthUser) {
+            this.AuthUser = AuthUser;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class HelloWorldSeguroRequestBody {
-        
-        public HelloWorldSeguroRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="HelloWorldSeguroResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class HelloWorldSeguroResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldSeguroResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ConsumeWSSegura.MiServicioReference.HelloWorldSeguroResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string HelloWorldSeguroResult;
         
         public HelloWorldSeguroResponse() {
         }
         
-        public HelloWorldSeguroResponse(ConsumeWSSegura.MiServicioReference.HelloWorldSeguroResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloWorldSeguroResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloWorldSeguroResult;
-        
-        public HelloWorldSeguroResponseBody() {
-        }
-        
-        public HelloWorldSeguroResponseBody(string HelloWorldSeguroResult) {
+        public HelloWorldSeguroResponse(string HelloWorldSeguroResult) {
             this.HelloWorldSeguroResult = HelloWorldSeguroResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldSinSeguridadRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldSinSeguridad", Namespace="http://tempuri.org/", Order=0)]
-        public ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequestBody Body;
-        
-        public HelloWorldSinSeguridadRequest() {
-        }
-        
-        public HelloWorldSinSeguridadRequest(ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class HelloWorldSinSeguridadRequestBody {
-        
-        public HelloWorldSinSeguridadRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldSinSeguridadResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldSinSeguridadResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadResponseBody Body;
-        
-        public HelloWorldSinSeguridadResponse() {
-        }
-        
-        public HelloWorldSinSeguridadResponse(ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloWorldSinSeguridadResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloWorldSinSeguridadResult;
-        
-        public HelloWorldSinSeguridadResponseBody() {
-        }
-        
-        public HelloWorldSinSeguridadResponseBody(string HelloWorldSinSeguridadResult) {
-            this.HelloWorldSinSeguridadResult = HelloWorldSinSeguridadResult;
         }
     }
     
@@ -184,11 +157,11 @@ namespace ConsumeWSSegura.MiServicioReference {
             return base.Channel.HelloWorldSeguro(request);
         }
         
-        public string HelloWorldSeguro() {
+        public string HelloWorldSeguro(ConsumeWSSegura.MiServicioReference.AuthUser AuthUser) {
             ConsumeWSSegura.MiServicioReference.HelloWorldSeguroRequest inValue = new ConsumeWSSegura.MiServicioReference.HelloWorldSeguroRequest();
-            inValue.Body = new ConsumeWSSegura.MiServicioReference.HelloWorldSeguroRequestBody();
+            inValue.AuthUser = AuthUser;
             ConsumeWSSegura.MiServicioReference.HelloWorldSeguroResponse retVal = ((ConsumeWSSegura.MiServicioReference.MiServicioSoap)(this)).HelloWorldSeguro(inValue);
-            return retVal.Body.HelloWorldSeguroResult;
+            return retVal.HelloWorldSeguroResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -196,33 +169,18 @@ namespace ConsumeWSSegura.MiServicioReference {
             return base.Channel.HelloWorldSeguroAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ConsumeWSSegura.MiServicioReference.HelloWorldSeguroResponse> HelloWorldSeguroAsync() {
+        public System.Threading.Tasks.Task<ConsumeWSSegura.MiServicioReference.HelloWorldSeguroResponse> HelloWorldSeguroAsync(ConsumeWSSegura.MiServicioReference.AuthUser AuthUser) {
             ConsumeWSSegura.MiServicioReference.HelloWorldSeguroRequest inValue = new ConsumeWSSegura.MiServicioReference.HelloWorldSeguroRequest();
-            inValue.Body = new ConsumeWSSegura.MiServicioReference.HelloWorldSeguroRequestBody();
+            inValue.AuthUser = AuthUser;
             return ((ConsumeWSSegura.MiServicioReference.MiServicioSoap)(this)).HelloWorldSeguroAsync(inValue);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadResponse ConsumeWSSegura.MiServicioReference.MiServicioSoap.HelloWorldSinSeguridad(ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequest request) {
-            return base.Channel.HelloWorldSinSeguridad(request);
-        }
-        
         public string HelloWorldSinSeguridad() {
-            ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequest inValue = new ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequest();
-            inValue.Body = new ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequestBody();
-            ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadResponse retVal = ((ConsumeWSSegura.MiServicioReference.MiServicioSoap)(this)).HelloWorldSinSeguridad(inValue);
-            return retVal.Body.HelloWorldSinSeguridadResult;
+            return base.Channel.HelloWorldSinSeguridad();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadResponse> ConsumeWSSegura.MiServicioReference.MiServicioSoap.HelloWorldSinSeguridadAsync(ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequest request) {
-            return base.Channel.HelloWorldSinSeguridadAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadResponse> HelloWorldSinSeguridadAsync() {
-            ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequest inValue = new ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequest();
-            inValue.Body = new ConsumeWSSegura.MiServicioReference.HelloWorldSinSeguridadRequestBody();
-            return ((ConsumeWSSegura.MiServicioReference.MiServicioSoap)(this)).HelloWorldSinSeguridadAsync(inValue);
+        public System.Threading.Tasks.Task<string> HelloWorldSinSeguridadAsync() {
+            return base.Channel.HelloWorldSinSeguridadAsync();
         }
     }
 }

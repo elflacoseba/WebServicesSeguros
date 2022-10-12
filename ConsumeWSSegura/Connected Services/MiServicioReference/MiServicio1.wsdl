@@ -12,6 +12,14 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="AuthUser" type="tns:AuthUser" />
+      <s:complexType name="AuthUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
       <s:element name="HelloWorldSinSeguridad">
         <s:complexType />
       </s:element>
@@ -29,6 +37,9 @@
   </wsdl:message>
   <wsdl:message name="HelloWorldSeguroSoapOut">
     <wsdl:part name="parameters" element="tns:HelloWorldSeguroResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSeguroAuthUser">
+    <wsdl:part name="AuthUser" element="tns:AuthUser" />
   </wsdl:message>
   <wsdl:message name="HelloWorldSinSeguridadSoapIn">
     <wsdl:part name="parameters" element="tns:HelloWorldSinSeguridad" />
@@ -54,6 +65,7 @@
       <soap:operation soapAction="http://tempuri.org/HelloWorldSeguro" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
+        <soap:header message="tns:HelloWorldSeguroAuthUser" part="AuthUser" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -75,6 +87,7 @@
       <soap12:operation soapAction="http://tempuri.org/HelloWorldSeguro" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
+        <soap12:header message="tns:HelloWorldSeguroAuthUser" part="AuthUser" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

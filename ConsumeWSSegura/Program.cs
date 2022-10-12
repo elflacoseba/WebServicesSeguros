@@ -10,7 +10,9 @@ namespace ConsumeWSSegura
     {
         static void Main(string[] args)
         {
-            ConsumeHelloWorldSinSeguridad();
+            //ConsumeHelloWorldSinSeguridad();
+
+            ConsumeHelloWorldSeguro();
         }
 
         private static void ConsumeHelloWorldSinSeguridad()
@@ -24,5 +26,20 @@ namespace ConsumeWSSegura
                 Console.ReadKey();
             }
         }
+
+        private static void ConsumeHelloWorldSeguro()
+        {
+            using (var client = new MiServicioReference.MiServicioSoapClient())
+            {
+                MiServicioReference.AuthUser authUser = new MiServicioReference.AuthUser { UserName = "elflacoseba", Password = "1234" };               
+
+                string result = client.HelloWorldSeguro(authUser);
+
+                Console.WriteLine(result);
+
+                Console.ReadKey();
+            }
+        }
+                
     }
 }
