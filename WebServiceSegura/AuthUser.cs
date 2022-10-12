@@ -17,7 +17,14 @@ namespace WebServiceSegura
         /// <returns></returns>
         public  bool IsValid()
         {
-            return true;
+            if ( this.UserName == Properties.Settings.Default.UserName && this.Password == Properties.Settings.Default.Password)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }            
         }
 
     }
